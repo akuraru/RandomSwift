@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (1.2.0)
+  - FBSnapshotTestCase (1.6)
+  - Kiwi (2.3.1)
+  - RandomTest (0.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - FBSnapshotTestCase
+  - Kiwi
+  - RandomTest (from `./`)
+
+EXTERNAL SOURCES:
+  RandomTest:
+    :git: ./
+
+CHECKOUT OPTIONS:
+  RandomTest:
+    :commit: f75f858f83fd868a8137d50410d43a8e25e6e4f6
+    :git: ./
+
+SPEC CHECKSUMS:
+  Alamofire: d765c5c1713aa64106b0228aaa600a1e6851f68d
+  FBSnapshotTestCase: 9d5fe43b29ae3a0ed8fc829477971b281038f748
+  Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55
+  RandomTest: abf981d682294a50f13e5fb8cb90d2b87b10fbdc
+
+COCOAPODS: 0.36.3
