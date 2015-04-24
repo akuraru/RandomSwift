@@ -2,14 +2,12 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-target 'RandomTest', :exclusive => true do
-  pod "RandomTest", :git => "./"
-  pod 'Alamofire'
+target 'RandomSwift', :exclusive => true do
+  pod "Random", :path => "./"
 end
 
 target 'Tests', :exclusive => true do
-  pod "RandomTest", :git => "./"
-  pod 'Alamofire'
+  pod "Random", :path => "./"
 
   pod 'Kiwi'
   pod 'FBSnapshotTestCase'

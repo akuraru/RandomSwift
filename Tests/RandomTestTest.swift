@@ -8,18 +8,11 @@
 
 import Foundation
 import XCTest
-import RandomTest
-import Alamofire
+import Random
 
 class RandomTestTest : XCTestCase {
     func testf() {
+        let s = Random.d
         
-        Alamofire.request(.GET, "http://httpbin.org/get") .response { (request, response, data, error) in
-            println(request)
-            println(response)
-            println(error)
-        }
-        let expect = RandomTest.f();
-        XCTAssertEqual(expect, "", "f")
     }
 }
