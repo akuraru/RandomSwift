@@ -8,11 +8,21 @@
 
 import Foundation
 import XCTest
-import Random
 
 class RandomTestTest : XCTestCase {
-    func testf() {
-        let s = Random.d
-        
+    let r = Random()
+    
+    func testInt() {
+        let expect = r.intValue()
+        XCTAssert(0 < expect && expect < Int.max, "\(expect)")
     }
+    
+    func testRange() {
+        let start = 100
+        let end = 200
+        let expect = r.intValue(Range(start: start, end: end))
+        XCTAssert(start <= expect && expect <= end, "\(expect)")
+    }
+    
+    func
 }

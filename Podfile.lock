@@ -1,20 +1,10 @@
 PODS:
-  - FBSnapshotTestCase (1.6)
   - Kiwi (2.3.1)
-  - Random (0.1.0)
 
 DEPENDENCIES:
-  - FBSnapshotTestCase
   - Kiwi
-  - Random (from `./`)
-
-EXTERNAL SOURCES:
-  Random:
-    :path: ./
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: 9d5fe43b29ae3a0ed8fc829477971b281038f748
   Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55
-  Random: b91b55106659eaae75533e93ee46e59d4fc3bb98
 
-COCOAPODS: 0.36.4
+COCOAPODS: 0.37.1
