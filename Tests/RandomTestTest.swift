@@ -24,5 +24,15 @@ class RandomTestTest : XCTestCase {
         XCTAssert(start <= expect && expect <= end, "\(expect)")
     }
     
-    func
+    func testBool() {
+        let expcet = Set((1...100).map{i in self.r.boolValue()})
+        XCTAssertEqual(expcet, Set([true, false]), "\(expcet)")
+    }
+    
+    func testString() {
+        let expect = r.stringValue()
+        let a = expect.toInt()?.description
+        XCTAssertEqual(expect, a!, "\(expect)")
+        XCTAssert(0 < expect.lengthOfBytesUsingEncoding(4), "\(expect)")
+    }
 }
