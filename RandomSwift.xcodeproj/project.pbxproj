@@ -135,7 +135,6 @@
 				TargetAttributes = {
 					BEB4BF3D1AF6F998005ADD60 = {
 						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = BEB4BF281AF6F998005ADD60;
 					};
 				};
 			};
@@ -324,7 +323,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 242E76245B0ABAAB1E2550E3 /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -336,7 +334,6 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RandomSwift.app/RandomSwift";
 			};
 			name = Debug;
 		};
@@ -344,7 +341,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F859890EA9BE37960C71C04A /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -352,7 +348,6 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RandomSwift.app/RandomSwift";
 			};
 			name = Release;
 		};
