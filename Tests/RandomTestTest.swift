@@ -43,4 +43,13 @@ class RandomTestTest : XCTestCase {
         let expcet = Set((1...100).map{i in self.r.alphabet()})
         XCTAssertEqual(expcet.count, 100, "\(expcet)")
     }
+    func testAlphabetLenght() {
+        let lenght = 50
+        let expect = r.alphabet(lenght)
+        XCTAssertEqual(expect.lengthOfBytesUsingEncoding(4), lenght, "\(expect)")
+    }
+    func testAlphabetLenghtIsRandom() {
+        let expcet = Set((1...100).map{i in self.r.alphabet(50)})
+        XCTAssertEqual(expcet.count, 100, "\(expcet)")
+    }
 }
