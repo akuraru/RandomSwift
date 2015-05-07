@@ -17,12 +17,12 @@ public class Random {
         return "0"
     }
     func alphabet() -> String {
-        return "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"
+        return alphabet(100)
+    }
+    func alphabet(range: Range<Int>) -> String {
+        return alphabet(intValue(range))
     }
     func alphabet(length: Int) -> String {
         return "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890".substringToIndex(length)
-    }
-    func alphabet(range: Range<Int>) -> String {
-        return "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890".substringToIndex(intValue(range))
     }
 }
