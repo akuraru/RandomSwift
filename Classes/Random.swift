@@ -26,3 +26,40 @@ public class Random {
         return "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890".substringToIndex(length)
     }
 }
+
+// Random String
+public class RandomString {
+    let length: Int
+    init (length: Int) {
+        self.length = length
+    }
+    
+    func stringFromIndex(index: Int) -> String { return "" }
+}
+
+public class WordsString : RandomString {
+    let location: Int
+    init (range: Range<Int>) {
+        self.location = range.startIndex
+        super.init(length: range.endIndex - range.startIndex)
+    }
+    subscript(index: Int) -> String {
+        let uniChar: UniChar = UniChar(index + location);
+        if (CFStringIsSurrogateHighCharacter(uniChar) == 1 || CFStringIsSurrogateLowCharacter(uniChar) == 1) {
+            var inputChar = UTF32Char(index + location)
+            inputChar -= 0x10000
+            var highSurrogate: unichar = unichar(inputChar >> 10); // leave the top 10 bits
+            highSurrogate += 0xD800;
+            var lowSurrogate: unichar = unichar(inputChar & 0x3FF); // leave the low 10 bits
+            lowSurrogate += 0xDC00;
+            return NSString(characters: [unichar](arrayLiteral: highSurrogate, lowSurrogate), length: 2) as String
+        }
+        return NSString(characters: [unichar](arrayLiteral: uniChar), length: 1) as String
+    }
+}
+
+public class CaptalAlphabet: WordsString {
+    init () {
+        super.init(range: 0x41...0x5a)
+    }
+}
