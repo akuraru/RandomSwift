@@ -67,4 +67,12 @@ class RandomTestTest : XCTestCase {
         let alphabet = CaptalAlphabet()
         XCTAssertEqual(alphabet[0], "A")
     }
+    func testCaptalAlphabetLength() {
+        let alphabet = CaptalAlphabet()
+        XCTAssertEqual(alphabet.length, 26)
+    }
+    func testCaptalAlphabetLast() {
+        let alphabet = CaptalAlphabet()
+        XCTAssertEqual(alphabet[alphabet.length - 1], "Z")
+    }
 }

@@ -23,7 +23,10 @@ public class Random {
         return alphabet(intValue(range))
     }
     func alphabet(length: Int) -> String {
-        return "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890".substringToIndex(length)
+        let captalAlphabet = CaptalAlphabet()
+        return (0...(length - 1)).map{i in
+            captalAlphabet[self.intValue((0...(captalAlphabet.length - 1)))]
+        }.reduce("", combine: { (s, t) in s + t})
     }
 }
 
@@ -44,6 +47,7 @@ public class WordsString : RandomString {
         super.init(length: range.endIndex - range.startIndex)
     }
     subscript(index: Int) -> String {
+        assert(0 <= index && index < length, "fatal error: Array index out of range")
         let uniChar: UniChar = UniChar(index + location);
         if (CFStringIsSurrogateHighCharacter(uniChar) == 1 || CFStringIsSurrogateLowCharacter(uniChar) == 1) {
             var inputChar = UTF32Char(index + location)
