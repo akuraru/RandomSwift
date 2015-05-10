@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0286BBEBC70F6BBB52E1A405 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DFBE41468035F1A5D41A23 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE3B35E91AF6FA6900B7040E /* RandomTestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B35E21AF6FA4C00B7040E /* RandomTestTest.swift */; };
+		BEBF54581AFED55600566EE0 /* RandomStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF54571AFED55600566EE0 /* RandomStringTest.swift */; };
 		BEC493FC1B03652500E94ACC /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC493F91B03651100E94ACC /* Random.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		BE3B35E41AF6FA4C00B7040E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE3B35E51AF6FA4C00B7040E /* Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		BEB4BF3E1AF6F998005ADD60 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEBF54571AFED55600566EE0 /* RandomStringTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomStringTest.swift; sourceTree = "<group>"; };
 		BEC493F81B03651100E94ACC /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		BEC493F91B03651100E94ACC /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		F859890EA9BE37960C71C04A /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 				BE3B35E31AF6FA4C00B7040E /* Tests-Bridging-Header.h */,
 				BE3B35E41AF6FA4C00B7040E /* Info.plist */,
 				BE3B35E51AF6FA4C00B7040E /* Tests-Prefix.pch */,
+				BEBF54571AFED55600566EE0 /* RandomStringTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEBF54581AFED55600566EE0 /* RandomStringTest.swift in Sources */,
 				BEC493FC1B03652500E94ACC /* Random.swift in Sources */,
 				BE3B35E91AF6FA6900B7040E /* RandomTestTest.swift in Sources */,
 			);

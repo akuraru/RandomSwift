@@ -67,3 +67,139 @@ public class CaptalAlphabet: WordsString {
         super.init(range: 0x41...0x5a)
     }
 }
+
+public class LowerCaseAlphabet: WordsString {
+    init() {
+        super.init(range: 0x61...0x7a)
+    }
+}
+
+public class AsciiWord: WordsString {
+    init() {
+        super.init(range: 0x20...0x7E)
+    }
+}
+
+public class Number: WordsString {
+    init() {
+        super.init(range: 0x30...0x39)
+    }
+}
+
+public class Hiragana: WordsString {
+    init() {
+        super.init(range: 0x3041...0x3093)
+    }
+}
+
+public class Katakana: WordsString {
+    init() {
+        super.init(range: 0x30A1...0x30F6)
+    }
+}
+
+public class CommonKanji: WordsString {
+    init() {
+        super.init(range: 0x4E00...0x9FA0)
+    }
+}
+
+public class Kanji1: WordsString {
+    init() {
+        super.init(range: 0x3220...0x3244)
+    }
+}
+
+public class Kanji2: WordsString {
+    init() {
+        super.init(range: 0x3280...0x32B0)
+    }
+}
+
+public class Kanji3: WordsString {
+    init() {
+        super.init(range: 0x3400...0x9FFF)
+    }
+}
+
+public class Kanji4: WordsString {
+    init() {
+        super.init(range: 0xF900...0xFAFF)
+    }
+}
+
+public class Kanji5: WordsString {
+    init() {
+        super.init(range: 0x20000...0x2FFFF)
+    }
+}
+
+
+public class HorizontalTab: WordsString {
+    init() {
+        super.init(range: 0x09...0x09)
+    }
+}
+
+public class VerticalTab: WordsString {
+    init() {
+        super.init(range: 0x0B...0x0B)
+    }
+}
+
+public class Newline: WordsString {
+    init() {
+        super.init(range: 0x0A...0x0A)
+    }
+}
+
+public class Return: WordsString {
+    init() {
+        super.init(range: 0x0D...0x0D)
+    }
+}
+
+public class BackSpace: WordsString {
+    init() {
+        super.init(range: 0x08...0x08)
+    }
+}
+
+public class FormFeed: WordsString {
+    init() {
+        super.init(range: 0x0C...0x0C)
+    }
+}
+
+public class Bell: WordsString {
+    init() {
+        super.init(range: 0x07...0x07)
+    }
+}
+
+public class Escape: WordsString {
+    init() {
+        super.init(range: 0x1B...0x1B)
+    }
+}
+
+public class UnderBar: WordsString {
+    init() {
+        super.init(range: 0x5F...0x5F)
+    }
+}
+
+public class Backslash: WordsString {
+    init() {
+        super.init(range: 0x5c...0x5c)
+    }
+}
+
+public class Space: WordsString {
+    init() {
+        super.init(range: 0x20...0x20)
+    }
+}
+
+
+
