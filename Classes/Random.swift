@@ -48,8 +48,10 @@ public class WordsString : RandomString {
     }
     subscript(index: Int) -> String {
         assert(0 <= index && index < length, "fatal error: Array index out of range")
-        let uniChar: UniChar = UniChar(index + location);
-        if (CFStringIsSurrogateHighCharacter(uniChar) == 1 || CFStringIsSurrogateLowCharacter(uniChar) == 1) {
+        if ((index + location) < Int(UniChar.max)) {
+            let uniChar: UniChar = UniChar(index + location);
+            return NSString(characters: [unichar](arrayLiteral: uniChar), length: 1) as String
+        } else {
             var inputChar = UTF32Char(index + location)
             inputChar -= 0x10000
             var highSurrogate: unichar = unichar(inputChar >> 10); // leave the top 10 bits
@@ -58,7 +60,6 @@ public class WordsString : RandomString {
             lowSurrogate += 0xDC00;
             return NSString(characters: [unichar](arrayLiteral: highSurrogate, lowSurrogate), length: 2) as String
         }
-        return NSString(characters: [unichar](arrayLiteral: uniChar), length: 1) as String
     }
 }
 
