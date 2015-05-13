@@ -10,19 +10,17 @@ import Foundation
 import XCTest
 
 class RandomStringTest : XCTestCase {
-    let r = Random()
-    
     func testCaptalAlphabet() {
-        let alphabet = CaptalAlphabet()
-        XCTAssertEqual(alphabet[0], "A")
+        let words = CaptalAlphabet()
+        XCTAssertEqual(words[0], "A")
     }
     func testCaptalAlphabetLength() {
-        let alphabet = CaptalAlphabet()
-        XCTAssertEqual(alphabet.length, 26)
+        let words = CaptalAlphabet()
+        XCTAssertEqual(words.length, 26)
     }
     func testCaptalAlphabetLast() {
-        let alphabet = CaptalAlphabet()
-        XCTAssertEqual(alphabet[alphabet.length - 1], "Z")
+        let words = CaptalAlphabet()
+        XCTAssertEqual(words[words.length - 1], "Z")
     }
     
     
@@ -106,7 +104,7 @@ class RandomStringTest : XCTestCase {
     
     func testKanji1First() {
         let words = Kanji1()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "㈠")
     }
     func testKanji1Length() {
         let words = Kanji1()
@@ -114,12 +112,12 @@ class RandomStringTest : XCTestCase {
     }
     func testKanji1Last() {
         let words = Kanji1()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "㉄")
     }
     
     func testKanji2First() {
         let words = Kanji2()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "㊀")
     }
     func testKanji2Length() {
         let words = Kanji2()
@@ -127,12 +125,12 @@ class RandomStringTest : XCTestCase {
     }
     func testKanji2Last() {
         let words = Kanji2()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "㊰")
     }
     
     func testKanji3First() {
         let words = Kanji3()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "㐀")
     }
     func testKanji3Length() {
         let words = Kanji3()
@@ -140,12 +138,12 @@ class RandomStringTest : XCTestCase {
     }
     func testKanji3Last() {
         let words = Kanji3()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "鿿")
     }
     
     func testKanji4First() {
         let words = Kanji4()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "豈")
     }
     func testKanji4Length() {
         let words = Kanji4()
@@ -153,12 +151,12 @@ class RandomStringTest : XCTestCase {
     }
     func testKanji4Last() {
         let words = Kanji4()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "﫿")
     }
     
     func testKanji5First() {
         let words = Kanji5()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "𠀀")
     }
     func testKanji5Length() {
         let words = Kanji5()
@@ -166,13 +164,13 @@ class RandomStringTest : XCTestCase {
     }
     func testKanji5Last() {
         let words = Kanji5()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "𯿿")
     }
     
     
     func testHorizontalTabFirst() {
         let words = HorizontalTab()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "\t")
     }
     func testHorizontalTabLength() {
         let words = HorizontalTab()
@@ -180,12 +178,12 @@ class RandomStringTest : XCTestCase {
     }
     func testHorizontalTabLast() {
         let words = HorizontalTab()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "\t")
     }
     
     func testVerticalTabFirst() {
         let words = VerticalTab()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "\u{0B}")
     }
     func testVerticalTabLength() {
         let words = VerticalTab()
@@ -193,7 +191,7 @@ class RandomStringTest : XCTestCase {
     }
     func testVerticalTabLast() {
         let words = VerticalTab()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "\u{0B}")
     }
     
     func testNewlineFirst() {
@@ -211,7 +209,7 @@ class RandomStringTest : XCTestCase {
     
     func testReturnFirst() {
         let words = Return()
-        XCTAssertEqual(words[0], "\n")
+        XCTAssertEqual(words[0], "\u{0D}")
     }
     func testReturnLength() {
         let words = Return()
@@ -219,12 +217,12 @@ class RandomStringTest : XCTestCase {
     }
     func testReturnLast() {
         let words = Return()
-        XCTAssertEqual(words[words.length - 1], "\n")
+        XCTAssertEqual(words[words.length - 1], "\u{0D}")
     }
     
     func testBackSpaceFirst() {
         let words = BackSpace()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "\u{08}")
     }
     func testBackSpaceLength() {
         let words = BackSpace()
@@ -232,12 +230,12 @@ class RandomStringTest : XCTestCase {
     }
     func testBackSpaceLast() {
         let words = BackSpace()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "\u{08}")
     }
     
     func testFormFeedFirst() {
         let words = FormFeed()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "\u{0C}")
     }
     func testFormFeedLength() {
         let words = FormFeed()
@@ -245,12 +243,12 @@ class RandomStringTest : XCTestCase {
     }
     func testFormFeedLast() {
         let words = FormFeed()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "\u{0C}")
     }
     
     func testBellFirst() {
         let words = Bell()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "\u{07}")
     }
     func testBellLength() {
         let words = Bell()
@@ -258,12 +256,12 @@ class RandomStringTest : XCTestCase {
     }
     func testBellLast() {
         let words = Bell()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "\u{07}")
     }
     
     func testEscapeFirst() {
         let words = Escape()
-        XCTAssertEqual(words[0], "")
+        XCTAssertEqual(words[0], "\u{1B}")
     }
     func testEscapeLength() {
         let words = Escape()
@@ -271,7 +269,7 @@ class RandomStringTest : XCTestCase {
     }
     func testEscapeLast() {
         let words = Escape()
-        XCTAssertEqual(words[words.length - 1], "")
+        XCTAssertEqual(words[words.length - 1], "\u{1B}")
     }
     
     func testUnderBarFirst() {

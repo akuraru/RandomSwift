@@ -17,16 +17,42 @@ public class Random {
         return "0"
     }
     func alphabet() -> String {
-        return alphabet(100)
+        return alphabet(1...100)
     }
     func alphabet(range: Range<Int>) -> String {
         return alphabet(intValue(range))
     }
     func alphabet(length: Int) -> String {
-        let captalAlphabet = CaptalAlphabet()
+        let words = Alphabet()
         return (0...(length - 1)).map{i in
-            captalAlphabet[self.intValue((0...(captalAlphabet.length - 1)))]
+            words[self.intValue((0...(words.length - 1)))]
         }.reduce("", combine: { (s, t) in s + t})
+    }
+    
+    func japanese() -> String {
+        return japanese(1...100)
+    }
+    func japanese(range: Range<Int>) -> String {
+        return japanese(intValue(range))
+    }
+    func japanese(length: Int) -> String {
+        let words = Japanese()
+        return (0...(length - 1)).map{i in
+            words[self.intValue((0...(words.length - 1)))]
+        }.reduce("", combine: { (s, t) in s + t})
+    }
+    
+    func words() -> String {
+        return words(1...100)
+    }
+    func words(range: Range<Int>) -> String {
+        return words(intValue(range))
+    }
+    func words(length: Int) -> String {
+        let words = Words()
+        return (0...(length - 1)).map{i in
+            words[self.intValue((0...(words.length - 1)))]
+            }.reduce("", combine: { (s, t) in s + t})
     }
 }
 
@@ -37,7 +63,7 @@ public class RandomString {
         self.length = length
     }
     
-    func stringFromIndex(index: Int) -> String { return "" }
+    subscript(index: Int) -> String { return "" }
 }
 
 public class WordsString : RandomString {
@@ -46,7 +72,7 @@ public class WordsString : RandomString {
         self.location = range.startIndex
         super.init(length: range.endIndex - range.startIndex)
     }
-    subscript(index: Int) -> String {
+    override subscript(index: Int) -> String {
         assert(0 <= index && index < length, "fatal error: Array index out of range")
         if ((index + location) < Int(UniChar.max)) {
             let uniChar: UniChar = UniChar(index + location);
@@ -60,6 +86,29 @@ public class WordsString : RandomString {
             lowSurrogate += 0xDC00;
             return NSString(characters: [unichar](arrayLiteral: highSurrogate, lowSurrogate), length: 2) as String
         }
+    }
+}
+
+public class SetString : RandomString {
+    let words: [RandomString]
+    
+    init(words: [RandomString]) {
+        self.words = words
+        let l = words.reduce(0){(s, w) in s + w.length}
+        super.init(length: l)
+    }
+    override subscript(index: Int) -> String {
+        assert(0 <= index && index < length, "fatal error: Array index out of range")
+        
+        var i = index
+        for w in self.words {
+            if (i < w.length) {
+                return w[i]
+            } else {
+                i -= w.length
+            }
+        }
+        return ""
     }
 }
 
@@ -203,4 +252,43 @@ public class Space: WordsString {
 }
 
 
+public class Japanese: SetString {
+    init() {
+        super.init(words: [
+            Hiragana(),
+            Katakana(),
+            CommonKanji(),
+        ])
+    }
+}
 
+public class Alphabet: SetString {
+    init() {
+        super.init(words: [
+            CaptalAlphabet(),
+            LowerCaseAlphabet(),
+        ])
+    }
+}
+
+public class Words: SetString {
+    init() {
+        super.init(words: [
+            Alphabet(),
+            Number(),
+            UnderBar(),
+        ])
+    }
+}
+    
+public class SpaseSet: SetString {
+    init() {
+        super.init(words: [
+            Space(),
+            HorizontalTab(),
+            Return(),
+            Newline(),
+            FormFeed(),
+        ])
+    }
+}
