@@ -52,7 +52,20 @@ public class Random {
         let words = Words()
         return (0...(length - 1)).map{i in
             words[self.intValue((0...(words.length - 1)))]
-            }.reduce("", combine: { (s, t) in s + t})
+        }.reduce("", combine: { (s, t) in s + t})
+    }
+    
+    func spaseSet() -> String {
+        return spaseSet(1...100)
+    }
+    func spaseSet(range: Range<Int>) -> String {
+        return spaseSet(intValue(range))
+    }
+    func spaseSet(length: Int) -> String {
+        let words = SpaseSet()
+        return (0...(length - 1)).map{i in
+            words[self.intValue((0...(words.length - 1)))]
+        }.reduce("", combine: { (s, t) in s + t})
     }
 }
 

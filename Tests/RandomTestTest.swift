@@ -33,27 +33,27 @@ class RandomTestTest : XCTestCase {
         let expect = r.stringValue()
         let a = expect.toInt()?.description
         XCTAssertEqual(expect, a!, "\(expect)")
-        let l = self.lenght(expect)
+        let l = self.length(expect)
         XCTAssert(0 < l, "\(expect)")
     }
     
     // Alphabet
     func testAlphabet() {
         let expect = r.alphabet()
-        let l = self.lenght(expect)
+        let l = self.length(expect)
         XCTAssert(0 < l && l <= 100, "\(expect)")
     }
     func testAlphabetIsRandom() {
         let expcet = Set((1...100).map{i in self.r.alphabet()})
         XCTAssertEqual(expcet.count, 100, "\(expcet)")
     }
-    func testAlphabetLenght() {
-        let lenght = 50
-        let expect = r.alphabet(lenght)
-        let l = self.lenght(expect)
-        XCTAssertEqual(l, lenght, "\(expect)")
+    func testAlphabetlength() {
+        let length = 50
+        let expect = r.alphabet(length)
+        let l = self.length(expect)
+        XCTAssertEqual(l, length, "\(expect)")
     }
-    func testAlphabetLenghtIsRandom() {
+    func testAlphabetlengthIsRandom() {
         let expcet = Set((1...100).map{i in self.r.alphabet(50)})
         XCTAssertEqual(expcet.count, 100, "\(expcet)")
     }
@@ -61,7 +61,7 @@ class RandomTestTest : XCTestCase {
         let start = 50
         let end = 100
         let expect = r.alphabet(Range(start: start, end: end))
-        let l = self.lenght(expect)
+        let l = self.length(expect)
         XCTAssert(start <= l && l <= end, "\(expect)")
     }
     func testAlphabetRangeIsRandom() {
@@ -72,20 +72,20 @@ class RandomTestTest : XCTestCase {
     // Japanese
     func testJapanese() {
         let expect = r.japanese()
-        let l = self.lenght(expect)
+        let l = self.length(expect)
         XCTAssert(0 < l && l <= 100, "\(expect)")
     }
     func testJapaneseIsRandom() {
         let expcet = Set((1...100).map{i in self.r.japanese()})
         XCTAssertEqual(expcet.count, 100, "\(expcet)")
     }
-    func testJapaneseLenght() {
-        let lenght = 50
-        let expect = r.japanese(lenght)
-        let l = self.lenght(expect)
-        XCTAssertEqual(l, lenght, "\(expect)")
+    func testJapaneselength() {
+        let length = 50
+        let expect = r.japanese(length)
+        let l = self.length(expect)
+        XCTAssertEqual(l, length, "\(expect)")
     }
-    func testJapaneseLenghtIsRandom() {
+    func testJapaneselengthIsRandom() {
         let expcet = Set((1...100).map{i in self.r.japanese(50)})
         XCTAssertEqual(expcet.count, 100, "\(expcet)")
     }
@@ -93,7 +93,7 @@ class RandomTestTest : XCTestCase {
         let start = 50
         let end = 100
         let expect = r.japanese(Range(start: start, end: end))
-        let l = self.lenght(expect)
+        let l = self.length(expect)
         XCTAssert(start <= l && l <= end, "\(expect)")
     }
     func testJapaneseRangeIsRandom() {
@@ -104,20 +104,20 @@ class RandomTestTest : XCTestCase {
     // Words
     func testWords() {
         let expect = r.words()
-        let l = self.lenght(expect)
+        let l = self.length(expect)
         XCTAssert(0 < l && l <= 100, "\(expect)")
     }
     func testWordsIsRandom() {
         let expcet = Set((1...100).map{i in self.r.words()})
         XCTAssertEqual(expcet.count, 100, "\(expcet)")
     }
-    func testWordsLenght() {
-        let lenght = 50
-        let expect = r.words(lenght)
-        let l = self.lenght(expect)
-        XCTAssertEqual(l, lenght, "\(expect)")
+    func testWordslength() {
+        let length = 50
+        let expect = r.words(length)
+        let l = self.length(expect)
+        XCTAssertEqual(l, length, "\(expect)")
     }
-    func testWordsLenghtIsRandom() {
+    func testWordslengthIsRandom() {
         let expcet = Set((1...100).map{i in self.r.words(50)})
         XCTAssertEqual(expcet.count, 100, "\(expcet)")
     }
@@ -125,7 +125,7 @@ class RandomTestTest : XCTestCase {
         let start = 50
         let end = 100
         let expect = r.words(Range(start: start, end: end))
-        let l = self.lenght(expect)
+        let l = self.length(expect)
         XCTAssert(start <= l && l <= end, "\(expect)")
     }
     func testWordsRangeIsRandom() {
@@ -133,7 +133,40 @@ class RandomTestTest : XCTestCase {
         XCTAssertEqual(expcet.count, 100, "\(expcet)")
     }
     
-    func lenght(s: String) -> Int {
+    // SpaseSet
+    func testSpaseSet() {
+        let expect = r.spaseSet()
+        let l = self.length(expect)
+        XCTAssert(0 < l && l <= 100, "\(expect)")
+    }
+    func testSpaseSetIsRandom() {
+        let expcet = Set((1...100).map{i in self.r.spaseSet()})
+        XCTAssertEqual(expcet.count, 100, "\(expcet)")
+    }
+    func testSpaseSetlength() {
+        let length = 50
+        let expect = r.spaseSet(length)
+        let l = self.length(expect)
+        XCTAssertEqual(l, length, "\(expect)")
+    }
+    func testSpaseSetLengthIsRandom() {
+        let expcet = Set((1...100).map{i in self.r.spaseSet(50)})
+        XCTAssertEqual(expcet.count, 100, "\(expcet)")
+    }
+    func testSpaseSetRange() {
+        let start = 50
+        let end = 100
+        let expect = r.spaseSet(Range(start: start, end: end))
+        let l = self.length(expect)
+        XCTAssert(start <= l && l <= end, "\(expect)")
+    }
+    func testSpaseSetRangeIsRandom() {
+        let expcet = Set((1...100).map{i in self.r.spaseSet(50...100)})
+        XCTAssertEqual(expcet.count, 100, "\(expcet)")
+    }
+
+    
+    func length(s: String) -> Int {
         var result = 0
         var index = s.startIndex
         while (index < s.endIndex) {
