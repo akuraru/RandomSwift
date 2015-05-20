@@ -2,66 +2,66 @@ import Foundation
 
 
 public class Random {
-    init () {
+    public init () {
     }
-    func intValue() -> Int {
+    public func intValue() -> Int {
         return Int(arc4random())
     }
-    func intValue(range: Range<Int>) -> Int {
+    public func intValue(range: Range<Int>) -> Int {
         return Int(arc4random_uniform(UInt32(range.endIndex - range.startIndex))) + range.startIndex
     }
-    func boolValue() -> Bool {
+    public func boolValue() -> Bool {
         return arc4random_uniform(2) == 0 ? true : false
     }
-    func stringValue() -> String {
+    public func stringValue() -> String {
         return "0"
     }
-    func alphabet() -> String {
+    public func alphabet() -> String {
         return alphabet(1...100)
     }
-    func alphabet(range: Range<Int>) -> String {
+    public func alphabet(range: Range<Int>) -> String {
         return alphabet(intValue(range))
     }
-    func alphabet(length: Int) -> String {
+    public func alphabet(length: Int) -> String {
         let words = Alphabet()
         return (0...(length - 1)).map{i in
             words[self.intValue((0...(words.length - 1)))]
         }.reduce("", combine: { (s, t) in s + t})
     }
     
-    func japanese() -> String {
+    public func japanese() -> String {
         return japanese(1...100)
     }
-    func japanese(range: Range<Int>) -> String {
+    public func japanese(range: Range<Int>) -> String {
         return japanese(intValue(range))
     }
-    func japanese(length: Int) -> String {
+    public func japanese(length: Int) -> String {
         let words = Japanese()
         return (0...(length - 1)).map{i in
             words[self.intValue((0...(words.length - 1)))]
         }.reduce("", combine: { (s, t) in s + t})
     }
     
-    func words() -> String {
+    public func words() -> String {
         return words(1...100)
     }
-    func words(range: Range<Int>) -> String {
+    public func words(range: Range<Int>) -> String {
         return words(intValue(range))
     }
-    func words(length: Int) -> String {
+    public func words(length: Int) -> String {
         let words = Words()
         return (0...(length - 1)).map{i in
             words[self.intValue((0...(words.length - 1)))]
         }.reduce("", combine: { (s, t) in s + t})
     }
     
-    func spaseSet() -> String {
+    public func spaseSet() -> String {
         return spaseSet(1...100)
     }
-    func spaseSet(range: Range<Int>) -> String {
+    public func spaseSet(range: Range<Int>) -> String {
         return spaseSet(intValue(range))
     }
-    func spaseSet(length: Int) -> String {
+    public func spaseSet(length: Int) -> String {
         let words = SpaseSet()
         return (0...(length - 1)).map{i in
             words[self.intValue((0...(words.length - 1)))]
