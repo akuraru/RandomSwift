@@ -17,7 +17,7 @@ RandomTest is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "RandomTest"
+pod 'Random', :podspec => 'https://raw.githubusercontent.com/akuraru/RandomSwift/master/Random.podspec'
 ```
 
 ## Author
