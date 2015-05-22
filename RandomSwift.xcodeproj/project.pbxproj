@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0286BBEBC70F6BBB52E1A405 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DFBE41468035F1A5D41A23 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE0ED1CC1B06D814009E9448 /* RandomSetStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0ED1CB1B06D814009E9448 /* RandomSetStringTest.swift */; };
+		BE2A2FCC1B210A9800E538C3 /* ChiSquaredTestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2A2FCB1B210A9800E538C3 /* ChiSquaredTestTest.swift */; };
 		BE3B35E91AF6FA6900B7040E /* RandomTestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B35E21AF6FA4C00B7040E /* RandomTestTest.swift */; };
 		BEBACFB01B05ABCD00FC8E97 /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBACFAF1B05ABCD00FC8E97 /* Check.swift */; };
 		BEBF54581AFED55600566EE0 /* RandomStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF54571AFED55600566EE0 /* RandomStringTest.swift */; };
@@ -22,6 +23,7 @@
 		34B1A2C6D20E9B8C2A4ADEA4 /* Pods-RandomSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomSwift/Pods-RandomSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		4FD0BB7A3FB1EE74366B7D5F /* Pods-RandomSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-RandomSwift/Pods-RandomSwift.release.xcconfig"; sourceTree = "<group>"; };
 		BE0ED1CB1B06D814009E9448 /* RandomSetStringTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomSetStringTest.swift; sourceTree = "<group>"; };
+		BE2A2FCB1B210A9800E538C3 /* ChiSquaredTestTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChiSquaredTestTest.swift; sourceTree = "<group>"; };
 		BE3B35E11AF6FA4C00B7040E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BE3B35E21AF6FA4C00B7040E /* RandomTestTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomTestTest.swift; sourceTree = "<group>"; };
 		BE3B35E31AF6FA4C00B7040E /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				BE3B35E51AF6FA4C00B7040E /* Tests-Prefix.pch */,
 				BEBF54571AFED55600566EE0 /* RandomStringTest.swift */,
 				BE0ED1CB1B06D814009E9448 /* RandomSetStringTest.swift */,
+				BE2A2FCB1B210A9800E538C3 /* ChiSquaredTestTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			files = (
 				BE0ED1CC1B06D814009E9448 /* RandomSetStringTest.swift in Sources */,
 				BEBF54581AFED55600566EE0 /* RandomStringTest.swift in Sources */,
+				BE2A2FCC1B210A9800E538C3 /* ChiSquaredTestTest.swift in Sources */,
 				BEBACFB01B05ABCD00FC8E97 /* Check.swift in Sources */,
 				BEC493FC1B03652500E94ACC /* Random.swift in Sources */,
 				BE3B35E91AF6FA6900B7040E /* RandomTestTest.swift in Sources */,
