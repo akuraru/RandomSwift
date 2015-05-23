@@ -310,4 +310,37 @@ class RandomStringTest : XCTestCase {
         let words = Space()
         XCTAssertEqual(words[words.length - 1], " ")
     }
+    func testSpace() {
+        let words = Space()
+        let w = words[0]
+        XCTAssertEqual(stringLength(w), 1)
+    }
+    func testHorizontalTab() {
+        let words = HorizontalTab()
+        let w = words[0]
+        XCTAssertEqual(stringLength(w), 1)
+    }
+    func testReturn() {
+        let words = Return()
+        let w = words[0]
+        XCTAssertEqual(stringLength(w), 1)
+    }
+    
+    func testNewline() {
+        let words = Newline()
+        let w = words[0]
+        XCTAssertEqual(stringLength(w), 1)
+    }
+    
+    func testFormFeed() {
+        let words = FormFeed()
+        let w = words[0]
+        XCTAssertEqual(stringLength(w), 1)
+    }
+    func testReturnAndNewLine() {
+        let r = Return()
+        let n = Newline()
+        let w = "\(r[0])\(n[0])"
+        XCTAssertEqual(stringLength(w), 1)
+    }
 }
