@@ -1,6 +1,5 @@
 import Foundation
 
-
 public class Random {
     public init () {
     }

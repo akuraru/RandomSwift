@@ -11,6 +11,7 @@
 		BE0ED1CC1B06D814009E9448 /* RandomSetStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0ED1CB1B06D814009E9448 /* RandomSetStringTest.swift */; };
 		BE2A2FCC1B210A9800E538C3 /* ChiSquaredTestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2A2FCB1B210A9800E538C3 /* ChiSquaredTestTest.swift */; };
 		BE3B35E91AF6FA6900B7040E /* RandomTestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B35E21AF6FA4C00B7040E /* RandomTestTest.swift */; };
+		BE68F3091B1442EC00B0EED4 /* Regular.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE68F3081B1442EC00B0EED4 /* Regular.swift */; };
 		BEBACFB01B05ABCD00FC8E97 /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBACFAF1B05ABCD00FC8E97 /* Check.swift */; };
 		BEBF54581AFED55600566EE0 /* RandomStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF54571AFED55600566EE0 /* RandomStringTest.swift */; };
 		BEC493FC1B03652500E94ACC /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC493F91B03651100E94ACC /* Random.swift */; };
@@ -29,6 +30,7 @@
 		BE3B35E31AF6FA4C00B7040E /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		BE3B35E41AF6FA4C00B7040E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE3B35E51AF6FA4C00B7040E /* Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		BE68F3081B1442EC00B0EED4 /* Regular.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regular.swift; sourceTree = "<group>"; };
 		BEB4BF3E1AF6F998005ADD60 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBACFAF1B05ABCD00FC8E97 /* Check.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Check.swift; sourceTree = "<group>"; };
 		BEBF54571AFED55600566EE0 /* RandomStringTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomStringTest.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				BEC493F81B03651100E94ACC /* .gitkeep */,
 				BEC493F91B03651100E94ACC /* Random.swift */,
 				BEBACFAF1B05ABCD00FC8E97 /* Check.swift */,
+				BE68F3081B1442EC00B0EED4 /* Regular.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				BE0ED1CC1B06D814009E9448 /* RandomSetStringTest.swift in Sources */,
 				BEBF54581AFED55600566EE0 /* RandomStringTest.swift in Sources */,
 				BE2A2FCC1B210A9800E538C3 /* ChiSquaredTestTest.swift in Sources */,
+				BE68F3091B1442EC00B0EED4 /* Regular.swift in Sources */,
 				BEBACFB01B05ABCD00FC8E97 /* Check.swift in Sources */,
 				BEC493FC1B03652500E94ACC /* Random.swift in Sources */,
 				BE3B35E91AF6FA6900B7040E /* RandomTestTest.swift in Sources */,
