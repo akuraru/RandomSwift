@@ -8,7 +8,163 @@
 
 import Foundation
 
+class RegularBase {
+    var str = Array<RegularBase>()
+    var strings = Array<RegularBase>()
+    
+    init() {
+    }
+    init(regular: String) {
+        self.toObject(regular)
+        self.spliteOr()
+    }
+    func toObject(var regular: String) {
+        str = Array<RegularBase>()
+        while (0 < regular.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)) {
+            var (s, r) = self.push(regular)
+            regular = r
+        }
+    }
+    func push(var strings: String) -> (String, String) {
+        let result = strings[strings.startIndex..<strings.startIndex.successor()]
+        strings.removeAtIndex(strings.startIndex)
+        return (result, strings)
+    }
+    /*
+    NSString *result = [string substringToIndex:1];
+    [string deleteCharactersInRange:(NSRange){0, 1}];
+    return result;
+    }
+    
+    str = [NSMutableArray array];
+    while (regular.length != 0) {
+    NSMutableString *s = [self push:regular].mutableCopy;
+    if ([s isEqualToString:@"\\"]) {
+    id next = [self slishWord:regular];
+    if ([next isKindOfClass:[NSMutableString class]]) {
+    [str addObject:[RegularOneString generat:s]];
+    [str addObject:[RegularOneString generat:next]];
+    } else {
+    [str addObject:next];
+    }
+    } else if ([s isEqualToString:@"*"]) {
+    str[str.count - 1] = [RegularRepeatZero generat:str.lastObject];
+    } else if ([s isEqualToString:@"+"]) {
+    str[str.count - 1] = [RegularRepeatOne generat:str.lastObject];
+    } else if ([s isEqualToString:@"?"]) {
+    str[str.count - 1] = [RegularQuestion generat:str.lastObject];
+    } else if ([s isEqualToString:@"."]){
+    [str addObject:[RegularAll generat]];
+    } else if ([s isEqualToString:@"("]) {
+    [str addObject:[RegularGroupStart generate]];
+    } else if ([s isEqualToString:@"|"]) {
+    [str addObject:[RegularOR generate]];
+    } else if ([s isEqualToString:@")"]) {
+    NSInteger i = str.count - 1;
+    for (; 0 <= i; i--) {
+    if ([str[i] isKindOfClass:[RegularGroupStart class]]) {
+    break;
+    }
+    }
+    [str removeObjectAtIndex:i];
+    NSRange renge = (NSRange){i, str.count - i};
+    NSArray *group = [str subarrayWithRange:renge];
+    [str removeObjectsInRange:renge];
+    [str addObject:[RegularGroup generate:group]];
+    } else {
+    [str addObject:[RegularOneString generat:s]];
+    }
+*/
+    func spliteOr() {
+        for var i = 0, _len = str.count; i < _len ; i++ {
+            var regular = str[i]
+            if let r = regular as? RegularOr {
+                strings += str[0...i]
+                str = Array(str[(i+1)...(_len-i+1)])
+                self.spliteOr()
+            } else {
+                regular.spliteOr()
+            }
+        }
+        strings += str
+    }
+    func slishWord(regular: String) -> (RegularBase, String) {
+        var (next, r) = self.push(regular)
+        switch(next) {
+        case "c":
+            return (RegularAlphabet(), r)
+        case "w":
+            return (RegularAlphabet(), r)
+        case "c":
+            return (RegularAlphabet(), r)
+        case "w":
+            return (RegularWords(), r)
+        case "s":
+            return (RegularSpaceSet(), r)
+        case "t":
+            return (RegularHorizontalTab(), r)
+        case "v":
+            return (RegularVerticalTab(), r)
+        case "n":
+            return (RegularNewline(), r)
+        case "r":
+            return (RegularReturn(), r)
+        case "b":
+            return (RegularBackSpace(), r)
+        case "f":
+            return (RegularFormFeed(), r)
+        case "a":
+            return (RegularBell(), r)
+        case "e":
+            return (RegularEscape(), r)
+        case "d":
+            return (RegularNumber(), r)
+        case "\\":
+            return (RegularBackslash(), r)
+        default:
+            return (RegularBase(regular: next), r);
+        }
+    }
+    /*
+    
+    - (NSString *)string {
+    NSMutableString *string = [NSMutableString string];
+    for (RegularBase *rb in strings[arc4random_uniform((u_int32_t)strings.count)]) {
+    [string appendString:[rb string]];
+    }
+    return string;
+    }
+*/
+}
 
+class RegularOr: RegularBase {
+}
+class RegularAlphabet: RegularBase {
+}
+class RegularWords: RegularBase {
+}
+class RegularSpaceSet: RegularBase {
+}
+class RegularHorizontalTab: RegularBase {
+}
+class RegularVerticalTab: RegularBase {
+}
+class RegularNewline: RegularBase {
+}
+class RegularReturn: RegularBase {
+}
+class RegularBackSpace: RegularBase {
+}
+class RegularFormFeed: RegularBase {
+}
+class RegularBell: RegularBase {
+}
+class RegularEscape: RegularBase {
+}
+class RegularNumber: RegularBase {
+}
+class RegularBackslash: RegularBase {
+}
 /*
 //
 //  AKURegularString.m
@@ -77,122 +233,8 @@ import Foundation
 
 
 @implementation RegularBase {
-    @protected
-    NSMutableArray *str;
-    NSMutableArray *strings;
-    }
-    + (RegularBase *)generat:(NSMutableString *)string {
-        return [[self alloc] initWithRegular:string];
-        }
-        - (id)initWithRegular:(NSMutableString *)regular {
-            self = [super init];
-            if (self) {
-                strings = [NSMutableArray array];
-                [self toObject:regular];
-                [self spliteOr];
-            }
-            return self;
-            }
-            - (void)toObject:(NSMutableString *)regular {
-                str = [NSMutableArray array];
-                while (regular.length != 0) {
-                    NSMutableString *s = [self push:regular].mutableCopy;
-                    if ([s isEqualToString:@"\\"]) {
-                        id next = [self slishWord:regular];
-                        if ([next isKindOfClass:[NSMutableString class]]) {
-                            [str addObject:[RegularOneString generat:s]];
-                            [str addObject:[RegularOneString generat:next]];
-                        } else {
-                            [str addObject:next];
-                        }
-                    } else if ([s isEqualToString:@"*"]) {
-                        str[str.count - 1] = [RegularRepeatZero generat:str.lastObject];
-                    } else if ([s isEqualToString:@"+"]) {
-                        str[str.count - 1] = [RegularRepeatOne generat:str.lastObject];
-                    } else if ([s isEqualToString:@"?"]) {
-                        str[str.count - 1] = [RegularQuestion generat:str.lastObject];
-                    } else if ([s isEqualToString:@"."]){
-                        [str addObject:[RegularAll generat]];
-                    } else if ([s isEqualToString:@"("]) {
-                        [str addObject:[RegularGroupStart generate]];
-                    } else if ([s isEqualToString:@"|"]) {
-                        [str addObject:[RegularOR generate]];
-                    } else if ([s isEqualToString:@")"]) {
-                        NSInteger i = str.count - 1;
-                        for (; 0 <= i; i--) {
-                            if ([str[i] isKindOfClass:[RegularGroupStart class]]) {
-                                break;
-                            }
-                        }
-                        [str removeObjectAtIndex:i];
-                        NSRange renge = (NSRange){i, str.count - i};
-                        NSArray *group = [str subarrayWithRange:renge];
-                        [str removeObjectsInRange:renge];
-                        [str addObject:[RegularGroup generate:group]];
-                    } else {
-                        [str addObject:[RegularOneString generat:s]];
-                    }
-                }
-                }
-                - (void)spliteOr {
-                    for (NSInteger i = 0, _len = str.count;i < _len; i ++) {
-                        RegularBase *r = str[i];
-                        if ([r isKindOfClass:RegularOR.class]) {
-                            [strings addObject:[str subarrayWithRange:(NSRange){0, i}]];
-                            str = [str subarrayWithRange:(NSRange){i + 1, _len - (i + 1)}].mutableCopy;
-                            [self spliteOr];
-                            return;
-                        } else {
-                            [r spliteOr];
-                        }
-                    }
-                    [strings addObject:str];
-                    }
-                    - (id)slishWord:(NSMutableString *)regular {
-                        NSString *next = [self push:regular];
-                        if ([next isEqualToString:@"c"]) {
-                            return [RegularAlphabet generat];
-                        } else if ([next isEqualToString:@"w"]) {
-                            return [RegularWords generat];
-                        } else if ([next isEqualToString:@"s"]) {
-                            return [RegularSpaceSet generat];
-                        } else if ([next isEqualToString:@"t"]) {
-                            return [RegularHorizontalTab generat];
-                        } else if ([next isEqualToString:@"v"]) {
-                            return [RegularVerticalTab generat];
-                        } else if ([next isEqualToString:@"n"]) {
-                            return [RegularNewline generat];
-                        } else if ([next isEqualToString:@"r"]) {
-                            return [RegularReturn generat];
-                        } else if ([next isEqualToString:@"b"]) {
-                            return [RegularBackSpace generat];
-                        } else if ([next isEqualToString:@"f"]) {
-                            return [RegularFormFeed generat];
-                        } else if ([next isEqualToString:@"a"]) {
-                            return [RegularBell generat];
-                        } else if ([next isEqualToString:@"e"]) {
-                            return [RegularEscape generat];
-                        } else if ([next isEqualToString:@"d"]) {
-                            return [RegularNumber generat];
-                        } else if ([next isEqualToString:@"\\"]) {
-                            return [RegularBackslash generat];
-                        } else {
-                            return next.mutableCopy;
-                        }
-                        }
-                        - (NSString *)push:(NSMutableString *)string {
-                            NSString *result = [string substringToIndex:1];
-                            [string deleteCharactersInRange:(NSRange){0, 1}];
-                            return result;
-                            }
-                            
-                            - (NSString *)string {
-                                NSMutableString *string = [NSMutableString string];
-                                for (RegularBase *rb in strings[arc4random_uniform((u_int32_t)strings.count)]) {
-                                    [string appendString:[rb string]];
-                                }
-                                return string;
 }
+                }
 @end
 
 @implementation RegularOneString {
