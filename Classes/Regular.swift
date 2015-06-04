@@ -23,58 +23,35 @@ class RegularBase {
         while (0 < regular.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)) {
             var (s, r) = self.push(regular)
             regular = r
+            if s == "\\" {
+                let (next, r) = self.slishWord(regular)
+                regular = r
+            } else if s == "*" {
+                str[str.count - 1] = RegularRepeatZero(regular: str.last!)
+            } else if s == "+" {
+                str[str.count - 1] = RegularRepeatOne(regular: str.last!)
+            } else if s == "?" {
+                str[str.count - 1] = RegularQuestion(regular: str.last!)
+            } else if s == "." {
+                str.append(RegularAll())
+            } else if s == "(" {
+                str.append(RegularGroupStart())
+            } else if s == "|" {
+                str.append(RegularOR())
+            } else if s == ")" {
+                var i = str.count - 1
+                for (; (0 <= i || str[i] as? RegularGroupStart != nil) ; i++) {
+                }
+                str.removeAtIndex(i)
+                let renge = i..<(str.count - i)
+                let group = str[renge]
+                str.removeRange(renge)
+                str.append(RegularGroup(group: Array(group)))
+            } else {
+                str.append(RegularOneString(string: s))
+            }
         }
     }
-    func push(var strings: String) -> (String, String) {
-        let result = strings[strings.startIndex..<strings.startIndex.successor()]
-        strings.removeAtIndex(strings.startIndex)
-        return (result, strings)
-    }
-    /*
-    NSString *result = [string substringToIndex:1];
-    [string deleteCharactersInRange:(NSRange){0, 1}];
-    return result;
-    }
-    
-    str = [NSMutableArray array];
-    while (regular.length != 0) {
-    NSMutableString *s = [self push:regular].mutableCopy;
-    if ([s isEqualToString:@"\\"]) {
-    id next = [self slishWord:regular];
-    if ([next isKindOfClass:[NSMutableString class]]) {
-    [str addObject:[RegularOneString generat:s]];
-    [str addObject:[RegularOneString generat:next]];
-    } else {
-    [str addObject:next];
-    }
-    } else if ([s isEqualToString:@"*"]) {
-    str[str.count - 1] = [RegularRepeatZero generat:str.lastObject];
-    } else if ([s isEqualToString:@"+"]) {
-    str[str.count - 1] = [RegularRepeatOne generat:str.lastObject];
-    } else if ([s isEqualToString:@"?"]) {
-    str[str.count - 1] = [RegularQuestion generat:str.lastObject];
-    } else if ([s isEqualToString:@"."]){
-    [str addObject:[RegularAll generat]];
-    } else if ([s isEqualToString:@"("]) {
-    [str addObject:[RegularGroupStart generate]];
-    } else if ([s isEqualToString:@"|"]) {
-    [str addObject:[RegularOR generate]];
-    } else if ([s isEqualToString:@")"]) {
-    NSInteger i = str.count - 1;
-    for (; 0 <= i; i--) {
-    if ([str[i] isKindOfClass:[RegularGroupStart class]]) {
-    break;
-    }
-    }
-    [str removeObjectAtIndex:i];
-    NSRange renge = (NSRange){i, str.count - i};
-    NSArray *group = [str subarrayWithRange:renge];
-    [str removeObjectsInRange:renge];
-    [str addObject:[RegularGroup generate:group]];
-    } else {
-    [str addObject:[RegularOneString generat:s]];
-    }
-*/
     func spliteOr() {
         for var i = 0, _len = str.count; i < _len ; i++ {
             var regular = str[i]
@@ -87,6 +64,11 @@ class RegularBase {
             }
         }
         strings += str
+    }
+    func push(var strings: String) -> (String, String) {
+        let result = strings[strings.startIndex..<strings.startIndex.successor()]
+        strings.removeAtIndex(strings.startIndex)
+        return (result, strings)
     }
     func slishWord(regular: String) -> (RegularBase, String) {
         var (next, r) = self.push(regular)
@@ -122,120 +104,79 @@ class RegularBase {
         case "\\":
             return (RegularBackslash(), r)
         default:
-            return (RegularBase(regular: next), r);
+            return (RegularOneString(string: next), r);
         }
     }
-    /*
-    
-    - (NSString *)string {
-    NSMutableString *string = [NSMutableString string];
-    for (RegularBase *rb in strings[arc4random_uniform((u_int32_t)strings.count)]) {
-    [string appendString:[rb string]];
-    }
-    return string;
-    }
-*/
 }
 
 class RegularOr: RegularBase {
 }
-class RegularAlphabet: RegularBase {
+class RegularOneString: RegularBase {
+    let s: String
+    init(string: String) {
+        s = string
+        super.init()
+    }
 }
-class RegularWords: RegularBase {
+class RegularWord: RegularBase {
+    override init() {
+        super.init()
+    }
 }
-class RegularSpaceSet: RegularBase {
+class RegularAlphabet: RegularWord {
 }
-class RegularHorizontalTab: RegularBase {
+class RegularWords: RegularWord {
 }
-class RegularVerticalTab: RegularBase {
+class RegularSpaceSet: RegularWord {
 }
-class RegularNewline: RegularBase {
+class RegularHorizontalTab: RegularWord {
 }
-class RegularReturn: RegularBase {
+class RegularVerticalTab: RegularWord {
 }
-class RegularBackSpace: RegularBase {
+class RegularNewline: RegularWord {
 }
-class RegularFormFeed: RegularBase {
+class RegularReturn: RegularWord {
 }
-class RegularBell: RegularBase {
+class RegularBackSpace: RegularWord {
 }
-class RegularEscape: RegularBase {
+class RegularFormFeed: RegularWord {
 }
-class RegularNumber: RegularBase {
+class RegularBell: RegularWord {
 }
-class RegularBackslash: RegularBase {
+class RegularEscape: RegularWord {
 }
+class RegularNumber: RegularWord {
+}
+class RegularBackslash: RegularWord {
+}
+class RegularRepeat: RegularBase {
+    let r: RegularBase
+    init(regular :RegularBase) {
+        r = regular
+        super.init()
+    }
+}
+class RegularRepeatZero: RegularRepeat {
+}
+class RegularRepeatOne: RegularRepeat {
+}
+class RegularQuestion: RegularRepeat {
+}
+class RegularAll: RegularBase {
+}
+class RegularGroupStart: RegularBase {
+}
+class RegularOR: RegularBase {
+}
+class RegularGroup: RegularBase {
+    let group: Array<RegularBase>
+    init(group: Array<RegularBase>) {
+        self.group = group
+        super.init()
+    }
+}
+
 /*
-//
-//  AKURegularString.m
-//  AKTestFreamework
-//
-//  Created by P.I.akura on 2013/09/20.
-//  Copyright (c) 2013年 P.I.akura. All rights reserved.
-//
-
-#import "AKURegularString.h"
-#import "AKURandString.h"
-
-@interface RegularBase : NSObject
-- (NSString *)string;
-@end
-@interface RegularOneString : RegularBase
-@end
-@interface RegularWord : RegularBase
-+ (RegularBase *)generat;
-@end
-@interface RegularAlphabet : RegularWord
-@end
-@interface RegularWords : RegularWord
-@end
-@interface RegularAll : RegularWord
-@end
-@interface RegularSpaceSet : RegularWord
-@end
-@interface RegularNumber : RegularWord
-@end
-@interface RegularHorizontalTab : RegularWord
-@end
-@interface RegularVerticalTab : RegularWord
-@end
-@interface RegularNewline : RegularWord
-@end
-@interface RegularReturn : RegularWord
-@end
-@interface RegularBackSpace : RegularWord
-@end
-@interface RegularFormFeed : RegularWord
-@end
-@interface RegularBell : RegularWord
-@end
-@interface RegularEscape : RegularWord
-@end
-@interface RegularBackslash : RegularWord
-@end
-@interface RegularRepeatZero : RegularBase
-+ (RegularBase *)generat:(RegularBase *)regurla;
-@end
-@interface RegularRepeatOne : RegularRepeatZero
-@end
-@interface RegularQuestion : RegularRepeatZero
-@end
-
-@interface RegularGroupStart : RegularBase
-+ (RegularBase *)generate;
-@end
-@interface RegularGroup : RegularBase
-+ (RegularBase *)generate:(NSArray *)_str;
-@end
-@interface RegularOR : RegularBase
-+ (RegularBase *)generate;
-@end
-
-
-@implementation RegularBase {
-}
-                }
-@end
 
 @implementation RegularOneString {
     NSString *string;
