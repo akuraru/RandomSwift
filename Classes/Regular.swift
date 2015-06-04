@@ -111,11 +111,14 @@ class RegularBase {
 
 class RegularOr: RegularBase {
 }
-class RegularOneString: RegularBase {
+class RegularOneString: RegularBase, DebugPrintable {
     let s: String
     init(string: String) {
         s = string
         super.init()
+    }
+    var debugDescription: String {
+        get { return s }
     }
 }
 class RegularWord: RegularBase {
@@ -177,25 +180,6 @@ class RegularGroup: RegularBase {
 }
 
 /*
-
-@implementation RegularOneString {
-    NSString *string;
-    }
-    + (RegularBase *)generat:(NSMutableString *)string {
-        return [[self alloc] initWithRegular:string];
-        }
-        - (id)initWithRegular:(NSMutableString *)regular {
-            self = [super init];
-            if (self) {
-                string = regular;
-            }
-            return self;
-            }
-            
-            - (NSString *)string {
-                return string;
-}
-@end
 @implementation RegularWord {
     @protected
     AKURandString *rand;
