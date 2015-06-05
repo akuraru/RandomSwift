@@ -111,19 +111,20 @@ class RegularBase {
 
 class RegularOr: RegularBase {
 }
-class RegularOneString: RegularBase, DebugPrintable {
+class RegularOneString: RegularBase {
     let s: String
     init(string: String) {
         s = string
         super.init()
     }
-    var debugDescription: String {
-        get { return s }
+    func string() -> String {
+        return s
     }
 }
 class RegularWord: RegularBase {
-    override init() {
-        super.init()
+    let r = Random()
+    func string() -> String {
+        return r.alphabet()
     }
 }
 class RegularAlphabet: RegularWord {
@@ -180,16 +181,6 @@ class RegularGroup: RegularBase {
 }
 
 /*
-@implementation RegularWord {
-    @protected
-    AKURandString *rand;
-    }
-    + (RegularBase *)generat {
-        return [[self alloc] init];
-        }
-        - (NSString *)string {
-            return [rand nextString];
-}
 @end
 @implementation RegularRepeatZero{
     @protected
