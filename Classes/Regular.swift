@@ -107,6 +107,9 @@ class RegularBase {
             return (RegularOneString(string: next), r);
         }
     }
+    func string() -> String {
+        return ""
+    }
 }
 
 class RegularOr: RegularBase {
@@ -117,13 +120,13 @@ class RegularOneString: RegularBase {
         s = string
         super.init()
     }
-    func string() -> String {
+    override func string() -> String {
         return s
     }
 }
 class RegularWord: RegularBase {
     let r = Random()
-    func string() -> String {
+    override func string() -> String {
         return r.alphabet()
     }
 }
@@ -154,10 +157,23 @@ class RegularNumber: RegularWord {
 class RegularBackslash: RegularWord {
 }
 class RegularRepeat: RegularBase {
-    let r: RegularBase
+    let regular: RegularBase
+    let range: Range<Int>
     init(regular :RegularBase) {
-        r = regular
+        self.regular = regular
+        self.range = 0...16
         super.init()
+    }
+    override func spliteOr() {
+        regular.spliteOr()
+    }
+    override func string() -> String {
+        var result = ""
+        let _len = Int(arc4random_uniform(UInt32(range.endIndex - range.startIndex))) + range.startIndex
+        for var i = 0; i < _len; i++ {
+            result = result + regular.string()
+        }
+        return result
     }
 }
 class RegularRepeatZero: RegularRepeat {
@@ -181,38 +197,6 @@ class RegularGroup: RegularBase {
 }
 
 /*
-@end
-@implementation RegularRepeatZero{
-    @protected
-    RegularBase *r;
-    NSInteger location;
-    NSInteger length;
-    }
-    + (RegularBase *)generat:(RegularBase *)regular {
-        return [[self alloc] initWithRepeat:regular location:0 length:16];
-        }
-        - (id)initWithRepeat:(RegularBase *)regular location:(NSInteger)loc length:(NSInteger)len{
-            self = [super init];
-            if (self) {
-                r = regular;
-                location = loc;
-                length = len;
-            }
-            return self;
-            }
-            - (void)spliteOr {
-                [r spliteOr];
-                }
-                - (NSString *)string {
-                    NSMutableString *string = [NSMutableString string];
-                    NSInteger _len = arc4random_uniform((u_int32_t)(length - location)) + location;
-                    for (NSInteger i = 0; i < _len; i++) {
-                        [string appendString:[r string]];
-                    }
-                    return string;
-                    
-}
-@end
 @implementation RegularGroupStart
 + (RegularBase *)generate {
     return [[self alloc] init];
