@@ -185,6 +185,14 @@ class RegularQuestion: RegularRepeat {
 class RegularAll: RegularBase {
 }
 class RegularGroupStart: RegularBase {
+    class func generate() -> RegularBase {
+        return RegularGroupStart()
+    }
+    func string() -> String {
+        assert("RegularGroupStart")
+        return ""
+    }
+    
 }
 class RegularOR: RegularBase {
 }
@@ -196,16 +204,8 @@ class RegularGroup: RegularBase {
     }
 }
 
+
 /*
-@implementation RegularGroupStart
-+ (RegularBase *)generate {
-    return [[self alloc] init];
-    }
-    - (NSString *)string {
-        NSAssert(0, @"RegularGroupStart");
-        return @"";
-}
-@end
 @implementation RegularGroup
 + (RegularBase *)generate:(NSArray *)_str {
     return [[self alloc] initWithArray:_str];
